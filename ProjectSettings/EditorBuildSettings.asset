@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SlideDemo.unity
+    guid: 3e5d3eaabb62de3469b684622e4d641d
+  - enabled: 1
+    path: Assets/Scenes/RotateDemo.unity
+    guid: 91bd458f98781e14a98a64bf2b347ab1
+  - enabled: 1
+    path: Assets/Scenes/LiftDemo.unity
+    guid: 53a7f04227fbeed449ee157515058786
   m_configObjects: {}
