@@ -386,3 +386,7 @@ MonoBehaviour:
     values:
     - "\u8F6C\u52A8\u6865\u9762"
     - Rotate bridge
+  - id: settings.back
+    values:
+    - "\u8FD4\u56DE"
+    - Back
