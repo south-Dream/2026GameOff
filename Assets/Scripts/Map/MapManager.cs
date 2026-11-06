@@ -14,7 +14,6 @@ namespace PlaneShift
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private GameObject projectionPrefab;
         [SerializeField] private GameObject worldDetails;
-        [SerializeField] private Transform goalPoint;
         private MapMechanism[] mechanisms;
         private MapMechanism movingMechanism;
         private bool worldMode = true;
@@ -27,17 +26,6 @@ namespace PlaneShift
         public float Plane => plane;
         public bool IsMoving => movingMechanism != null;
 
-        public Vector3 ProjectionCenter
-        {
-            get
-            {
-                if (projection == null || projection.Count == 0) return data.spawn;
-                Bounds bounds = new Bounds(projection[0].position, projection[0].size);
-                foreach (ProjectionData piece in projection) bounds.Encapsulate(new Bounds(piece.position, piece.size));
-                return bounds.center;
-            }
-        }
-
         public void Init()
         {
             data.spawn = spawnPoint.position;
@@ -48,13 +36,16 @@ namespace PlaneShift
             foreach (MechanismButton button in GetComponentsInChildren<MechanismButton>(true)) button.Init(this);
         }
 
-        public void Preview(RoadData anchor, SpaceAxis selectedAxis)
+        /// <summary>
+        /// 从指定观察面生成投影 当前道路始终优先
+        /// </summary>
+        public void CreateProjection(RoadData anchor, SpaceAxis selectedAxis, Vector3 direction)
         {
             worldMode = false;
             axis = selectedAxis;
             plane = axis == SpaceAxis.Y ? anchor.Top : anchor.position[(int)axis];
-            projection = MapData.CreateProjection(data.roads, anchor, axis);
-            controller.CreatePreview(projection);
+            projection = MapData.CreateProjection(data.roads, anchor, axis, direction);
+            controller.CreateProjection(projection);
             if (worldDetails != null) worldDetails.SetActive(false);
         }
 
@@ -74,42 +65,23 @@ namespace PlaneShift
             Physics.SyncTransforms();
         }
 
-        public void CancelPreview()
-        {
-            worldMode = true;
-            controller.SetFlat(false, false);
-            controller.SetWorld(true);
-            if (worldDetails != null) worldDetails.SetActive(true);
-        }
-
-        public bool IsAtGoal(Vector3 foot)
-        {
-            if (goalPoint == null) return false;
-            Vector3 delta = foot - goalPoint.position;
-            return Mathf.Abs(delta.y) < 0.2f && new Vector2(delta.x, delta.z).magnitude < 1.1f;
-        }
-
         /// <summary>
-        /// 检查操作距离与道路占用后启动机关 升降台要求玩家先登台
+        /// 检查机关状态与道路占用 交互距离由当前按钮检测
         /// </summary>
         public bool CanUse(MapMechanism mechanism, PlayerManager player, out string message)
         {
             message = "";
-            if (!worldMode) { message = "请先展开空间"; return false; }
-            if (IsMoving) { message = "机关正在运行"; return false; }
+            if (!worldMode) { message = "notice.unfoldFirst"; return false; }
+            if (IsMoving) { message = "notice.moving"; return false; }
             if (mechanism == null || System.Array.IndexOf(mechanisms, mechanism) < 0)
-            { message = "机关尚未准备好"; return false; }
+            { message = "mechanism.wait"; return false; }
             player.RefreshGround();
-            if (!player.Data.grounded) { message = "请先站稳"; return false; }
-            Vector3 hand = player.Position + Vector3.up * 0.8f;
-            if (Vector3.Distance(hand, mechanism.Button.bounds.ClosestPoint(hand)) > mechanism.Data.useDistance)
-            { message = "请靠近操作按钮"; return false; }
-            controller.TryGetRoad(mechanism.Road, out RoadData road);
-            bool onPlatform = player.Data.road == road;
+            if (!player.Data.grounded) { message = "interact.grounded"; return false; }
+            bool onPlatform = controller.IsOnRoad(mechanism, player.Data.road);
             if (mechanism.Data.carryPlayer && !onPlatform)
-            { message = "请先走上升降台"; return false; }
+            { message = "notice.platform"; return false; }
             if (!mechanism.Data.carryPlayer && onPlatform)
-            { message = "请先离开桥面"; return false; }
+            { message = "notice.bridge"; return false; }
             return true;
         }
 
@@ -119,7 +91,7 @@ namespace PlaneShift
             movingMechanism = mechanism;
             mechanism.StartMove();
             player.SetControl(false);
-            message = "机关已启动";
+            message = "notice.started";
             return true;
         }
 
@@ -164,15 +136,18 @@ namespace PlaneShift
         }
 
         /// <summary>
-        /// 查询完整角色落脚范围并检查原地图中的恢复空间
+        /// 检查还原空间 原深度沿用已站稳位置 传空按新道路计算
         /// </summary>
-        public bool TryRestore(Vector3 foot, RoadData road, float radius, float height, out Vector3 target)
+        public bool TryRestore(Vector3 foot, RoadData road, float? depth, float radius, float height, out Vector3 target)
         {
             target = foot;
             if (road == null) return false;
-            target = MapData.Restore(foot, road, axis);
-            if (Mathf.Abs(target.x - road.position.x) > road.size.x / 2 - radius ||
-                Mathf.Abs(target.z - road.position.z) > road.size.z / 2 - radius) return false;
+            target = MapData.Restore(foot, road, axis, depth ?? road.position[(int)axis]);
+            float xMargin = depth.HasValue && axis == SpaceAxis.X ? 0 : radius;
+            float zMargin = depth.HasValue && axis == SpaceAxis.Z ? 0 : radius;
+            if (Mathf.Abs(target.x - road.position.x) > road.size.x / 2 - xMargin ||
+                Mathf.Abs(target.z - road.position.z) > road.size.z / 2 - zMargin) return false;
+            if (!controller.HasSurface(road, target)) return false;
             Bounds player = new Bounds(target + Vector3.up * (height / 2 + 0.04f),
                 new Vector3(radius * 2, height - 0.02f, radius * 2));
             foreach (RoadData other in data.roads)

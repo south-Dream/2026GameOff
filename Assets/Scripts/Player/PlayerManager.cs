@@ -21,6 +21,9 @@ namespace PlaneShift
         private InteractionInfo interactionInfo;
         private EventCenter.IDisposable refreshSubscription;
 
+        public Interactable Target => interactionTarget;
+        public Interactable LockedTarget { get; set; }
+        public event System.Action<MechanismButton> MechanismAccepted;
         public PlayerData Data => data;
         public Vector3 Position => controller.Position;
 
@@ -44,34 +47,40 @@ namespace PlaneShift
         }
 
         /// <summary>
-        /// 保持范围内的当前目标并在提示变化时通知界面
+        /// 选择范围内优先级最高的可用目标并通知界面
         /// </summary>
         public void UpdateInteraction(bool allowed)
         {
             if (!allowed) { ClearInteraction(); return; }
             RefreshGround();
-            if (interactionTarget == null || !interactionTarget.IsInRange(this))
+            if (LockedTarget != null) interactionTarget = LockedTarget;
+            if (LockedTarget == null)
             {
                 interactionTarget = null;
                 float nearest = float.MaxValue;
+                int priority = int.MinValue;
                 foreach (Interactable target in interactables)
                 {
                     if (target == null || !target.IsInRange(this)) continue;
                     float distance = target.GetDistance(this);
-                    if (distance >= nearest) continue;
+                    int order = target.CanInteract(this, out _) ? target.Priority : int.MinValue;
+                    if (order < priority || (order == priority && distance >= nearest)) continue;
                     nearest = distance;
+                    priority = order;
                     interactionTarget = target;
                 }
             }
             if (interactionTarget == null) { ClearInteraction(); return; }
             bool available = interactionTarget.CanInteract(this, out string reason);
-            string text = available ? "F  交互：" + interactionTarget.InteractionName : reason;
+            string text = available ? interactionTarget.InteractionName : reason;
             if (interactionInfo == null || !interactionInfo.visible || interactionInfo.available != available || interactionInfo.text != text)
             {
                 interactionInfo = new InteractionInfo { visible = true, available = available, text = text };
                 PublishInteraction();
             }
-            if (Input.GetKeyDown(KeyCode.F)) TryInteract();
+            if (available && interactionTarget is MechanismButton ready)
+                EventCenter.Instance.TriggerEvent(E_EventType.MechanismReady, ready);
+            if (InputManager.Instance.IsTrigger(E_InputEventType.Interact)) TryInteract();
         }
 
         public bool TryInteract()
@@ -83,8 +92,9 @@ namespace PlaneShift
                 EventCenter.Instance.TriggerEvent(E_EventType.Notice, message);
                 return false;
             }
+            if (interactionTarget is MechanismButton button) MechanismAccepted?.Invoke(button);
             ClearInteraction();
-            EventCenter.Instance.TriggerEvent(E_EventType.Notice, message);
+            if (!string.IsNullOrEmpty(message)) EventCenter.Instance.TriggerEvent(E_EventType.Notice, message);
             return true;
         }
 
@@ -121,8 +131,8 @@ namespace PlaneShift
         public void Tick(Vector3 right, Vector3 forward)
         {
             if (!canMove) return;
-            float horizontal = (Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0);
-            float vertical = (Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0);
+            float horizontal = (InputManager.Instance.IsTrigger(E_InputEventType.Right) ? 1 : 0) - (InputManager.Instance.IsTrigger(E_InputEventType.Left) ? 1 : 0);
+            float vertical = (InputManager.Instance.IsTrigger(E_InputEventType.Forward) ? 1 : 0) - (InputManager.Instance.IsTrigger(E_InputEventType.Back) ? 1 : 0);
             Vector3 direction = right * horizontal;
             if (!axis.HasValue || axis == SpaceAxis.Y) direction += forward * vertical;
             bool topView = axis == SpaceAxis.Y;

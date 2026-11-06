@@ -5,6 +5,11 @@ namespace UnityLightFrame
         InteractionChanged,
         ModeChanged,
         Notice,
-        RequestUI
+        RequestUI,
+        LevelUnloading,
+        LevelLoaded,
+        LevelCompleted,
+        RestartRequested,
+        MechanismReady
     }
 }

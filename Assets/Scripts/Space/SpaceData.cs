@@ -3,7 +3,7 @@ using System;
 namespace PlaneShift
 {
     public enum SpaceAxis { X, Y, Z }
-    public enum SpaceMode { World, Preview, Flat, Changing }
+    public enum SpaceMode { World = 0, Flat = 2, Changing = 3 }
     public enum ViewDirection { North, East, South, West, Top, Bottom }
 
     /// <summary>

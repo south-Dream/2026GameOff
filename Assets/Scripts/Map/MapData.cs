@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace PlaneShift
@@ -54,25 +55,27 @@ namespace PlaneShift
         }
 
         /// <summary>
-        /// 保留未压缩坐标并使用来源道路中心深度恢复落脚位置
+        /// 保留平面坐标并恢复指定深度与道路顶面
         /// </summary>
-        public static Vector3 Restore(Vector3 foot, RoadData road, SpaceAxis axis)
+        public static Vector3 Restore(Vector3 foot, RoadData road, SpaceAxis axis, float depth)
         {
-            foot[(int)axis] = road.position[(int)axis];
+            foot[(int)axis] = depth;
             foot.y = road.Top;
             return foot;
         }
 
         /// <summary>
-        /// 按锚点和配置顺序裁剪同面重叠区域并保留唯一来源
+        /// 优先保留脚下道路 其余按观察面的近侧排序
         /// </summary>
-        public static List<ProjectionData> CreateProjection(IReadOnlyList<RoadData> roads, RoadData anchor, SpaceAxis axis)
+        public static List<ProjectionData> CreateProjection(IReadOnlyList<RoadData> roads, RoadData anchor,
+            SpaceAxis axis, Vector3 direction)
         {
             var result = new List<ProjectionData>();
             if (anchor == null) return result;
             AddRoad(result, anchor, anchor, axis);
-            for (int i = 0; i < roads.Count; i++)
-                if (roads[i] != anchor) AddRoad(result, roads[i], anchor, axis);
+            var ordered = roads.OrderBy(road => Vector3.Dot(road.position, direction) - road.size[(int)axis] / 2);
+            foreach (RoadData road in ordered)
+                if (road != anchor) AddRoad(result, road, anchor, axis);
             return result;
         }
 

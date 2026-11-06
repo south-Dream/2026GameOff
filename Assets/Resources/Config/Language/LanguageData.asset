@@ -1,0 +1,388 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af26a9d9f1b6e4f40b5f3eb79f11d6e3, type: 3}
+  m_Name: LanguageData
+  m_EditorClassIdentifier: 
+  languages:
+  - zh-CN
+  - en
+  entries:
+  - id: interact.generic
+    values:
+    - "\u4EA4\u4E92"
+    - Interact
+  - id: interact.near
+    values:
+    - "\u8BF7\u9760\u8FD1\u4EA4\u4E92\u7269"
+    - Move closer to interact
+  - id: interact.grounded
+    values:
+    - "\u8BF7\u5148\u7AD9\u7A33"
+    - Stand on solid ground first
+  - id: exit.next
+    values:
+    - "\u8FDB\u5165\u4E0B\u4E00\u5173"
+    - Enter next level
+  - id: exit.finish
+    values:
+    - "\u5B8C\u6210\u65C5\u7A0B"
+    - Complete journey
+  - id: exit.wait
+    values:
+    - "\u51FA\u53E3\u5C1A\u672A\u51C6\u5907\u597D"
+    - The exit is not ready
+  - id: exit.unfold
+    values:
+    - "\u8BF7\u5148\u5C55\u5F00\u7A7A\u95F4\u5E76\u7B49\u5F85\u673A\u5173\u505C\u7A33"
+    - Unfold space and wait for the mechanism to stop
+  - id: exit.unavailable
+    values:
+    - "\u6682\u65F6\u65E0\u6CD5\u4F7F\u7528\u51FA\u53E3"
+    - The exit is unavailable
+  - id: mechanism.wait
+    values:
+    - "\u673A\u5173\u5C1A\u672A\u51C6\u5907\u597D"
+    - The mechanism is not ready
+  - id: notice.arrived
+    values:
+    - "\u673A\u5173\u5DF2\u5230\u4F4D"
+    - Mechanism in position
+  - id: mode.flat
+    values:
+    - "WASD \u79FB\u52A8  \xB7  Shift \u5C55\u5F00\u7A7A\u95F4  \xB7  R \u8FD4\u56DE\u8D77\u70B9"
+    - "WASD Move  \xB7  Shift Unfold  \xB7  R Return to start"
+  - id: mode.world
+    values:
+    - "WASD \u79FB\u52A8  \xB7  \u5DE6\u53F3\u65B9\u5411\u952E\u8F6C\u5411  \xB7 
+      \u4E0A\u4E0B\u65B9\u5411\u952E\u5207\u6362\u89C6\u89D2  \xB7  Shift \u538B\u7F29 
+      \xB7  F \u4EA4\u4E92"
+    - "WASD Move  \xB7  Left/Right Turn  \xB7  Up/Down Change view  \xB7  Shift Fold 
+      \xB7  F Interact"
+  - id: notice.ground
+    values:
+    - "\u8BF7\u7AD9\u5728\u9053\u8DEF\u4E0A\u518D\u538B\u7F29"
+    - Stand on a road before folding
+  - id: notice.blocked
+    values:
+    - "\u5F53\u524D\u4F4D\u7F6E\u65E0\u6CD5\u5C55\u5F00\uFF0C\u8BF7\u79FB\u81F3\u9053\u8DEF\u5B89\u5168\u533A\u57DF"
+    - Cannot unfold here. Move to a safe area on the road
+  - id: notice.unfolded
+    values:
+    - "\u7A7A\u95F4\u5DF2\u5C55\u5F00"
+    - Space unfolded
+  - id: notice.restart
+    values:
+    - "\u5DF2\u8FD4\u56DE\u8D77\u70B9"
+    - Returned to start
+  - id: ui.levelTitle
+    values:
+    - '{0}.{1}'
+    - '{0}. {1}'
+  - id: ui.progress
+    values:
+    - "\u5DF2\u5B8C\u6210 {0} / {1}"
+    - Completed {0} / {1}
+  - id: ui.pending
+    values:
+    - "\u5F85\u5EFA"
+    - Coming soon
+  - id: ui.completed
+    values:
+    - "\u5DF2\u5B8C\u6210"
+    - Completed
+  - id: ui.available
+    values:
+    - "\u53EF\u8FDB\u5165"
+    - Available
+  - id: ui.interaction
+    values:
+    - "F  \u4EA4\u4E92\uFF1A{0}"
+    - 'F  Interact: {0}'
+  - id: notice.unfoldFirst
+    values:
+    - "\u8BF7\u5148\u5C55\u5F00\u7A7A\u95F4"
+    - Unfold space first
+  - id: notice.moving
+    values:
+    - "\u673A\u5173\u6B63\u5728\u8FD0\u884C"
+    - The mechanism is moving
+  - id: notice.platform
+    values:
+    - "\u8BF7\u5148\u8D70\u4E0A\u5347\u964D\u53F0"
+    - Step onto the lift first
+  - id: notice.bridge
+    values:
+    - "\u8BF7\u5148\u79BB\u5F00\u6865\u9762"
+    - Step off the bridge first
+  - id: notice.started
+    values:
+    - "\u673A\u5173\u5DF2\u542F\u52A8"
+    - Mechanism activated
+  - id: notice.configuration
+    values:
+    - "\u5173\u5361\u914D\u7F6E\u4E0D\u5B8C\u6574\uFF0C\u6682\u65F6\u65E0\u6CD5\u52A0\u8F7D"
+    - The level configuration is incomplete and cannot be loaded
+  - id: ui.gameTitle
+    values:
+    - 'The Folded
+
+      Way'
+    - 'The Folded
+
+      Way'
+  - id: ui.start
+    values:
+    - "\u5F00\u59CB\u6E38\u620F"
+    - Play
+  - id: ui.settings
+    values:
+    - "\u8BBE\u7F6E"
+    - Settings
+  - id: ui.quit
+    values:
+    - "\u9000\u51FA"
+    - Quit
+  - id: ui.help
+    values:
+    - "\u73A9\u6CD5\u8BF4\u660E"
+    - How to Play
+  - id: ui.levels
+    values:
+    - "\u5173\u5361"
+    - Levels
+  - id: ui.playLevel
+    values:
+    - "\u8FDB\u5165\u5173\u5361"
+    - Enter Level
+  - id: ui.complete
+    values:
+    - "\u65C5\u7A0B\u5B8C\u6210"
+    - Journey Complete
+  - id: ui.restart
+    values:
+    - "\u91CD\u65B0\u5F00\u59CB"
+    - Restart
+  - id: ui.levelMenu
+    values:
+    - "\u8FD4\u56DE\u9009\u5173"
+    - Choose Level
+  - id: ui.practice
+    values:
+    - "\u5F00\u59CB\u7EC3\u4E60"
+    - Try It
+  - id: settings.music
+    values:
+    - "\u80CC\u666F\u97F3\u4E50"
+    - Music
+  - id: settings.sound
+    values:
+    - "\u97F3\u6548"
+    - Sound Effects
+  - id: settings.menu
+    values:
+    - "\u8FD4\u56DE\u4E3B\u83DC\u5355"
+    - Main Menu
+  - id: settings.chinese
+    values:
+    - "\u7B80\u4F53\u4E2D\u6587"
+    - "\u7B80\u4F53\u4E2D\u6587"
+  - id: settings.english
+    values:
+    - English
+    - English
+  - id: ui.controls
+    values:
+    - "WASD \u79FB\u52A8  \xB7  \u65B9\u5411\u952E\u5207\u6362\u89C6\u89D2  \xB7 
+      Shift \u538B\u7F29  \xB7  F \u4EA4\u4E92"
+    - "WASD Move  \xB7  Arrow Keys View  \xB7  Shift Fold  \xB7  F Interact"
+  - id: ui.helpBody
+    values:
+    - "W A S D    \u79FB\u52A8\u89D2\u8272\n\u65B9\u5411\u952E    \u5DE6\u53F3\u5207\u6362\u671D\u5411\uFF0C\u4E0A\u4E0B\u5207\u6362\u89C6\u89D2\nShift   
+      \u6309\u4E0B\u538B\u7F29\uFF0C\u518D\u6B21\u6309\u4E0B\u5C55\u5F00\nF    \u9760\u8FD1\u64CD\u4F5C\u53F0\u6216\u51FA\u53E3\u4EA4\u4E92\nR   
+      \u91CD\u7F6E\u672C\u5173\u89D2\u8272\u4E0E\u673A\u5173"
+    - 'W A S D    Move
+
+      Arrow Keys    Left / Right: turn; Up / Down: change
+      view
+
+      Shift    Press to fold, press again to unfold
+
+      F    Interact
+      near a console or exit
+
+      R    Reset the player and mechanisms in this
+      level'
+  - id: level.01.title
+    values:
+    - "\u521D\u8BC6\u6298\u9014"
+    - First Steps
+  - id: level.01.description
+    values:
+    - "\u5728\u5EAD\u9662\u7EC3\u4E60\u89C2\u5BDF\u4E0E\u538B\u7F29\uFF0C\u8BA4\u8BC6\u4E09\u7C7B\u673A\u5173\uFF0C\u518D\u72EC\u7ACB\u8D70\u5230\u51FA\u53E3"
+    - Practice observation and folding in the courtyard, try three kinds of mechanisms,
+      then find the exit
+  - id: level.02.title
+    values:
+    - "\u4EA4\u70B9\u4E4B\u5916"
+    - Beyond the Crossing
+  - id: level.02.description
+    values:
+    - "\u9AD8\u4F4E\u957F\u5ECA\u5F62\u6210\u5E73\u9762\u4EA4\u70B9\uFF0C\u79BB\u5F00\u91CD\u53E0\u533A\u5BFB\u627E\u65B0\u7684\u843D\u811A\u9053\u8DEF"
+    - High and low galleries meet in a plane. Leave the overlap to find another road
+      to land on
+  - id: level.03.title
+    values:
+    - "\u56DB\u5411\u8F6C\u89D2"
+    - Four-Way Corner
+  - id: level.03.description
+    values:
+    - "\u56DB\u4E2A\u671D\u5411\u8FDE\u63A5\u4E0D\u540C\u5CB8\u8FB9\uFF0C\u9009\u62E9\u8F6C\u89D2\u4E0E\u5C55\u5F00\u7684\u4F4D\u7F6E"
+    - Four orientations lead to different banks. Choose a corner and a place to unfold
+  - id: level.04.title
+    values:
+    - "\u5206\u5C94\u4E2D\u5EAD"
+    - Forked Courtyard
+  - id: level.04.description
+    values:
+    - "T \u5F62\u6865\u5F00\u653E\u4E0D\u540C\u5206\u652F\uFF0C\u8FDC\u5904\u7684\u9053\u8DEF\u4E5F\u53EF\u80FD\u6210\u4E3A\u963B\u6321"
+    - A T-shaped bridge opens different branches. A distant road may also block your
+      way
+  - id: level.05.title
+    values:
+    - "\u9AD8\u4F4E\u4E4B\u95F4"
+    - Between Heights
+  - id: level.05.description
+    values:
+    - "\u957F\u8DEF\u4E4B\u95F4\u65E2\u80FD\u4E58\u53F0\u5F80\u8FD4\uFF0C\u4E5F\u80FD\u5BFB\u627E\u5E73\u9762\u4E2D\u7684\u63A5\u9A73"
+    - Ride the lift between long roads, or find their connections in a plane
+  - id: level.06.title
+    values:
+    - "\u501F\u8DEF\u56DE\u73AF"
+    - Borrowed Paths
+  - id: level.06.description
+    values:
+    - "\u540C\u4E00\u5EA7\u6865\u53EF\u4EE5\u53CD\u590D\u4F7F\u7528\uFF0C\u4E24\u4FA7\u5C9B\u5C7F\u8FDE\u63A5\u4E0D\u540C\u7684\u56DE\u8DEF"
+    - Use the same bridge more than once. The islands on either side lead to different
+      loops
+  - id: level.07.title
+    values:
+    - "\u9519\u5F71\u957F\u5ECA"
+    - Gallery of Shadows
+  - id: level.07.description
+    values:
+    - "\u65AD\u53E3\u53EF\u4EE5\u6D88\u5931\uFF0C\u9AD8\u574E\u4E5F\u4F1A\u51FA\u73B0\uFF1B\u89C2\u5BDF\u4E0B\u5C42\u627F\u63A5\u9053\u8DEF"
+    - Gaps can disappear and ledges can emerge. Look for a road waiting below
+  - id: level.08.title
+    values:
+    - "\u4E24\u5CB8\u76F8\u671B"
+    - Across the Banks
+  - id: level.08.description
+    values:
+    - "\u76F8\u53CD\u65B9\u5411\u5E26\u6765\u4E0D\u540C\u7684\u91CD\u53E0\u6765\u6E90\uFF0C\u5148\u5224\u65AD\u843D\u811A\u4F4D\u7F6E"
+    - Opposite views reveal different overlapping roads. Decide where you will land
+      first
+  - id: level.09.title
+    values:
+    - "\u4EA4\u9519\u56DE\u5ECA"
+    - Interwoven Galleries
+  - id: level.09.description
+    values:
+    - "\u957F\u5ECA\u4EA4\u9519\uFF0C\u673A\u5173\u53EF\u9009\uFF0C\u5728\u7ACB\u4F53\u4E0E\u5E73\u9762\u4E4B\u95F4\u5BFB\u627E\u81EA\u5DF1\u7684\u8DEF\u7EBF"
+    - Galleries cross and mechanisms are optional. Find your own route between space
+      and plane
+  - id: level.10.title
+    values:
+    - "\u5F52\u9014\u4E4B\u95E8"
+    - The Way Home
+  - id: level.10.description
+    values:
+    - "\u8FDE\u63A5\u5916\u56F4\u56DE\u8DEF\u4E0E\u4E2D\u592E\u95E8\u5385\uFF0C\u7EC4\u5408\u89C2\u5BDF\u3001\u6362\u8DEF\u4E0E\u5C55\u5F00\u7684\u5224\u65AD"
+    - Connect the outer loop and the central gate by combining observation, route
+      changes and unfolding
+  - id: guide.Move.title
+    values:
+    - "\u8FC8\u51FA\u7B2C\u4E00\u6B65"
+    - Take the First Step
+  - id: guide.Move.body
+    values:
+    - "\u5206\u522B\u6309 W\u3001A\u3001S\u3001D \u79FB\u52A8\n\u8D70\u4E00\u5C0F\u6BB5\uFF0C\u611F\u53D7\u89D2\u8272\u76F8\u5BF9\u955C\u5934\u7684\u65B9\u5411"
+    - 'Press W, A, S and D in turn
+
+      Walk a short distance to feel movement
+      relative to the camera'
+  - id: guide.ViewSide.title
+    values:
+    - "\u6362\u4E00\u9762\u770B"
+    - See Another Side
+  - id: guide.ViewSide.body
+    values:
+    - "\u6309\u5DE6\u6216\u53F3\u65B9\u5411\u952E\uFF0C\u5207\u6362\u6C34\u5E73\u89C2\u5BDF\u65B9\u5411\n\u540C\u4E00\u6761\u8DEF\uFF0C\u4ECE\u4E0D\u540C\u65B9\u5411\u770B\u4F1A\u4EA7\u751F\u4E0D\u540C\u7684\u91CD\u53E0"
+    - 'Press the left or right arrow key to change the horizontal view
+
+      The
+      same road can overlap differently from another direction'
+  - id: guide.ViewTop.title
+    values:
+    - "\u89C2\u5BDF\u9AD8\u5EA6"
+    - Look from Above
+  - id: guide.ViewTop.body
+    values:
+    - "\u6309\u4E0A\u6216\u4E0B\u65B9\u5411\u952E\uFF0C\u5207\u6362\u4E0A\u4E0B\u89C2\u5BDF\u65B9\u5411"
+    - Press the up or down arrow key to change the vertical view
+  - id: guide.Compress.title
+    values:
+    - "\u628A\u7A7A\u95F4\u538B\u6210\u5E73\u9762"
+    - Fold into a Plane
+  - id: guide.Compress.body
+    values:
+    - "\u6309\u4E0B Shift \u538B\u7F29\u7A7A\u95F4"
+    - Press Shift to fold space
+  - id: guide.FlatMove.title
+    values:
+    - "\u8D70\u8FDB\u5E73\u9762"
+    - Walk in the Plane
+  - id: guide.FlatMove.body
+    values:
+    - "\u7528 WASD \u6CBF\u9053\u8DEF\u79FB\u52A8\u4E00\u5C0F\u6BB5"
+    - Use WASD to move a short distance along the road
+  - id: guide.Expand.title
+    values:
+    - "\u56DE\u5230\u7ACB\u4F53\u7A7A\u95F4"
+    - Return to Space
+  - id: guide.Expand.body
+    values:
+    - "\u79FB\u52A8\u5230\u5B89\u5168\u5904\uFF0C\u518D\u6309 Shift \u5C55\u5F00"
+    - Move to a safe place, then press Shift to unfold
+  - id: guide.Interact.title
+    values:
+    - "\u64CD\u4F5C\u673A\u5173"
+    - Use a Mechanism
+  - id: guide.Interact.body
+    values:
+    - "\u9760\u8FD1\u64CD\u4F5C\u53F0\uFF0C\u6309 F \u4EA4\u4E92"
+    - Move near a console and press F to interact
+  - id: interact.slide
+    values:
+    - "\u5207\u6362\u5E73\u79FB\u6865"
+    - Shift bridge
+  - id: interact.rotate
+    values:
+    - "\u65CB\u8F6C\u6865\u9762"
+    - Rotate bridge
+  - id: interact.lift
+    values:
+    - "\u5347\u964D\u5E73\u53F0"
+    - Move lift
+  - id: interact.turn
+    values:
+    - "\u8F6C\u52A8\u6865\u9762"
+    - Rotate bridge

@@ -9,13 +9,14 @@ namespace PlaneShift
     {
         [SerializeField] private MapMechanism mechanism;
         private MapManager map;
+        public MapMechanism Mechanism => mechanism;
 
         public void Init(MapManager manager) => map = manager;
 
         public override bool CanInteract(PlayerManager player, out string reason)
         {
             if (!base.CanInteract(player, out reason)) return false;
-            if (map == null) { reason = "机关尚未准备好"; return false; }
+            if (map == null) { reason = "mechanism.wait"; return false; }
             return map.CanUse(mechanism, player, out reason);
         }
 

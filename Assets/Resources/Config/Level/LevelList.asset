@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72a1ed03af764b248f9bc1ab7ef0ffad, type: 3}
+  m_Name: LevelList
+  m_EditorClassIdentifier: 
+  levels:
+  - prefab: {fileID: 5868178413200049865, guid: 3739f2cf9bbd85c4abf531403c50053f, type: 3}
+    title: level.01.title
+    description: level.01.description
+  - prefab: {fileID: 7629960742285969231, guid: d3eb3ed8e76682f4aba9df708186c0d0, type: 3}
+    title: level.02.title
+    description: level.02.description
+  - prefab: {fileID: 8714861197555119640, guid: 632a5c2176d309749a00b2bc7d6b6c5f, type: 3}
+    title: level.03.title
+    description: level.03.description
+  - prefab: {fileID: 8996934300935158649, guid: 66e28ca3354b34444b289f04bed85591, type: 3}
+    title: level.04.title
+    description: level.04.description
+  - prefab: {fileID: 2660679384789669019, guid: 541e95cd2e6f5e641bba02cccaf1d6ab, type: 3}
+    title: level.05.title
+    description: level.05.description
+  - prefab: {fileID: 5363646726738872854, guid: 80ba5584f42302e409ad0438fabdcee5, type: 3}
+    title: level.06.title
+    description: level.06.description
+  - prefab: {fileID: 5899079135399851532, guid: 406a62018c6c85648bd002dc17e0dc7f, type: 3}
+    title: level.07.title
+    description: level.07.description
+  - prefab: {fileID: 8025782068529250008, guid: d3bdab93a44cfde42afbbb219134c6a7, type: 3}
+    title: level.08.title
+    description: level.08.description
+  - prefab: {fileID: 506356981398572666, guid: dadc343ad10c75346bc96c52c1f331cd, type: 3}
+    title: level.09.title
+    description: level.09.description
+  - prefab: {fileID: 5496620106642888589, guid: 0abdd74c8fd1f1d4cad97cfa05c4a3b1, type: 3}
+    title: level.10.title
+    description: level.10.description

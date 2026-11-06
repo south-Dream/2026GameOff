@@ -1,0 +1,25 @@
+newmtl Cloak
+Kd 0.7900 0.2800 0.2000
+Ns 0
+
+newmtl CloakInside
+Kd 0.3100 0.1050 0.0750
+Ns 0
+
+newmtl Hem
+Kd 0.9300 0.8400 0.6600
+Ns 0
+
+newmtl Boots
+Kd 0.2000 0.1200 0.0900
+Ns 0
+
+newmtl Mask
+Kd 0.9400 0.8500 0.6800
+Ke 0.1200 0.0900 0.0550
+Ns 0
+
+newmtl Eyes
+Kd 0.0650 0.0950 0.1000
+Ns 0
+

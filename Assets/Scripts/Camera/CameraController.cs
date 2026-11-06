@@ -27,7 +27,7 @@ namespace PlaneShift
         public void ChangeView(ViewDirection direction, bool compressed, bool immediate)
         {
             flat = compressed;
-            if (flat && direction == ViewDirection.Bottom) direction = ViewDirection.Top;
+            if (direction == ViewDirection.Bottom) direction = ViewDirection.Top;
             Vector3 forward = CameraData.GetForward(direction);
             Vector3 up = Mathf.Abs(forward.y) > 0.9f ? Vector3.forward : Vector3.up;
             targetRotation = Quaternion.LookRotation(forward, up);
