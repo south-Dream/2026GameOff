@@ -42,6 +42,7 @@ namespace PlaneShift
         }
         public Collider Button => button;
         public bool IsMoving { get; private set; }
+        public bool IsRaised => active;
 
         public void Init()
         {

@@ -390,3 +390,15 @@ MonoBehaviour:
     values:
     - "\u8FD4\u56DE"
     - Back
+  - id: level.11.title
+    values:
+    - "\u56DE\u73AF\u8FF7\u5EAD"
+    - Looping Courtyard
+  - id: level.11.description
+    values:
+    - "\u9519\u5C42\u73AF\u5ECA\u4F1A\u628A\u4EBA\u5E26\u56DE\u539F\u5904\u3002\u89C2\u5BDF\u9053\u8DEF\u7684\u7F3A\u53E3\uFF0C\u5BFB\u627E\u771F\u6B63\u7684\u843D\u811A\u70B9"
+    - Offset galleries lead you back. Study the gaps and find a new landing.
+  - id: interact.callLift
+    values:
+    - "\u53EC\u56DE\u5347\u964D\u53F0"
+    - Recall lift

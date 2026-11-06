@@ -16,6 +16,10 @@ namespace PlaneShift
         [SerializeField] private GameObject worldDetails;
         private MapMechanism[] mechanisms;
         private MapMechanism movingMechanism;
+        /// <summary>
+        /// 仅承载已登台角色 远程召回时不带动玩家
+        /// </summary>
+        private bool carryPlayer;
         private bool worldMode = true;
         private MapController controller;
         private List<ProjectionData> projection;
@@ -83,7 +87,7 @@ namespace PlaneShift
             player.RefreshGround();
             if (!player.Data.grounded) { message = "interact.grounded"; return false; }
             bool onPlatform = controller.IsOnRoad(mechanism, player.Data.road);
-            if (mechanism.Data.carryPlayer && !onPlatform)
+            if (mechanism.Data.carryPlayer && !onPlatform && !(mechanism.Data.allowCall && mechanism.IsRaised))
             { message = "notice.platform"; return false; }
             if (!mechanism.Data.carryPlayer && onPlatform)
             { message = "notice.bridge"; return false; }
@@ -94,6 +98,7 @@ namespace PlaneShift
         {
             if (!CanUse(mechanism, player, out message)) return false;
             movingMechanism = mechanism;
+            carryPlayer = mechanism.Data.carryPlayer && controller.IsOnRoad(mechanism, player.Data.road);
             mechanism.StartMove();
             player.SetControl(false);
             message = "notice.started";
@@ -104,7 +109,7 @@ namespace PlaneShift
         {
             if (!IsMoving) return;
             Vector3 delta = movingMechanism.Tick(Time.deltaTime);
-            if (movingMechanism.Data.carryPlayer) player.Carry(delta);
+            if (carryPlayer) player.Carry(delta);
             if (movingMechanism.IsMoving) return;
             controller.RefreshRoads();
             player.RefreshGround();

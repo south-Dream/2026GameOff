@@ -13,6 +13,7 @@ namespace PlaneShift
         [SerializeField] private Text title;
         [SerializeField] private Text description;
         [SerializeField] private Text progress;
+        [SerializeField] private ScrollRect levelScroll;
         private int selected;
 
         private void OnEnable() => LanguageManager.Changed += ApplyLanguage;
@@ -46,6 +47,24 @@ namespace PlaneShift
             title.text = LanguageManager.Get("ui.levelTitle", index + 1, new LanguageManager.Word(levels[index].title));
             description.text = LanguageManager.Get(levels[index].description);
             progress.text = LanguageManager.Get("ui.progress", completed, levels.Length);
+            ShowNode(index);
+        }
+
+        /// <summary>
+        /// 将选中的节点移入左侧可见区域
+        /// </summary>
+        private void ShowNode(int index)
+        {
+            var node = (RectTransform)nodes[index].transform;
+            float left = node.anchoredPosition.x - node.rect.width / 2 - 30;
+            float right = node.anchoredPosition.x + node.rect.width / 2 + 30;
+            var position = levelScroll.content.anchoredPosition;
+            float width = levelScroll.viewport.rect.width;
+            if (left < -position.x) position.x = -Mathf.Max(0, left);
+            else if (right > -position.x + width)
+                position.x = -Mathf.Min(levelScroll.content.rect.width - width, right - width);
+            levelScroll.StopMovement();
+            levelScroll.content.anchoredPosition = position;
         }
 
         public void Play() => uiMgr.PlayLevel(selected);
