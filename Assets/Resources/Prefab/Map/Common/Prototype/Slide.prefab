@@ -88,7 +88,8 @@ MonoBehaviour:
     carryPlayer: 0
   movingRoot: {fileID: 5808722303350667822}
   road: {fileID: 8367248521123749581}
-  roads: []
+  roads:
+  - {fileID: 8367248521123749581}
   button: {fileID: 168769703514338451}
 --- !u!1 &3286974501262476347
 GameObject:
@@ -267,11 +268,15 @@ PrefabInstance:
     - target: {fileID: 2978195660960912454, guid: 17002fb922fadcd4abfc64a0dde4b1bb, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 27c29aa967d8200429aef26ba933e79c, type: 2}
+      objectReference: {fileID: 2100000, guid: c7e87c1f3b8640742baf97592dfd7c2b, type: 2}
     - target: {fileID: 4533845971799490689, guid: 17002fb922fadcd4abfc64a0dde4b1bb, type: 3}
       propertyPath: m_Name
       value: MechanismRoad
       objectReference: {fileID: 0}
+    - target: {fileID: 4809730444127055173, guid: 17002fb922fadcd4abfc64a0dde4b1bb, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 3c3374fc0382be24d8e196d5d83c5d22, type: 2}
     - target: {fileID: 8375947976812964918, guid: 17002fb922fadcd4abfc64a0dde4b1bb, type: 3}
       propertyPath: m_LocalScale.x
       value: 8

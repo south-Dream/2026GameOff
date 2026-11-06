@@ -194,7 +194,7 @@ MonoBehaviour:
   - id: settings.chinese
     values:
     - "\u7B80\u4F53\u4E2D\u6587"
-    - "\u7B80\u4F53\u4E2D\u6587"
+    - Simplified Chinese
   - id: settings.english
     values:
     - English
