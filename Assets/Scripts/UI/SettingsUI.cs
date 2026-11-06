@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 namespace PlaneShift
 {
@@ -16,6 +17,7 @@ namespace PlaneShift
         [SerializeField] private Text soundValue;
         [SerializeField] private AudioSource music;
         [SerializeField] private AudioSource sound;
+        [SerializeField] private AudioMixer mixer;
 
         public void Init()
         {
@@ -45,14 +47,14 @@ namespace PlaneShift
 
         public void SetMusic(float value)
         {
-            music.volume = value;
+            mixer.SetFloat("BgmVolume", value > 0 ? Mathf.Log10(value) * 20 : -80);
             musicValue.text = Mathf.RoundToInt(value * 100) + "%";
             PlayerPrefs.SetFloat("MusicVolume", value);
         }
 
         public void SetSound(float value)
         {
-            sound.volume = value;
+            mixer.SetFloat("SfxVolume", value > 0 ? Mathf.Log10(value) * 20 : -80);
             soundValue.text = Mathf.RoundToInt(value * 100) + "%";
             PlayerPrefs.SetFloat("SoundVolume", value);
         }

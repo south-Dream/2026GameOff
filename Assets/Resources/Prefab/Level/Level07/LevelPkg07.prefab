@@ -1767,6 +1767,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: m_Volume
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 9103067249347910053, guid: 3602e92ff94f7eb4eaeef5dee31efd14, type: 2}
     - target: {fileID: 1501536751416354479, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
       propertyPath: interactionName
       value: interact.lift
@@ -1783,6 +1799,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: moveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dce61505a6697134f95237da6167be58, type: 3}
+    - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: stopSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a57c2fb1000e31458ea773e740721dd, type: 3}
+    - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: startSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bfea99b13b47c0f4bbd03c10355d025a, type: 3}
+    - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 4518692381248967269}
     - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
       propertyPath: data.duration
       value: 1.1
@@ -1855,6 +1887,11 @@ PrefabInstance:
 --- !u!4 &3143544579338192858 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 485253289669986007, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+  m_PrefabInstance: {fileID: 3250449288606531853}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4518692381248967269 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
   m_PrefabInstance: {fileID: 3250449288606531853}
   m_PrefabAsset: {fileID: 0}
 --- !u!65 &9058798316851993566 stripped

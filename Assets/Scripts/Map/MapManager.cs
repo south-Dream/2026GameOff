@@ -26,6 +26,11 @@ namespace PlaneShift
         public float Plane => plane;
         public bool IsMoving => movingMechanism != null;
 
+        public void SetSoundPaused(bool paused)
+        {
+            foreach (MapMechanism mechanism in mechanisms) mechanism.SetSoundPaused(paused);
+        }
+
         public void Init()
         {
             data.spawn = spawnPoint.position;

@@ -10,6 +10,7 @@ namespace UnityLightFrame
         LevelLoaded,
         LevelCompleted,
         RestartRequested,
-        MechanismReady
+        MechanismReady,
+        LevelPassed
     }
 }

@@ -16,12 +16,17 @@ namespace PlaneShift
         [SerializeField] private Text levelText;
         [SerializeField] private UIMgr uiMgr;
         [SerializeField] private GameObject completePanel;
+        /// <summary>
+        /// 使用常驻音源保留切关后的通关尾音
+        /// </summary>
+        [SerializeField] private AudioSource passedSound;
         private EventCenter.IDisposable interactionSubscription;
         private EventCenter.IDisposable modeSubscription;
         private EventCenter.IDisposable noticeSubscription;
         private EventCenter.IDisposable levelSubscription;
         private EventCenter.IDisposable unloadSubscription;
         private EventCenter.IDisposable completeSubscription;
+        private EventCenter.IDisposable passedSubscription;
         private float noticeEnd;
         private InteractionInfo currentInteraction;
         private string modeId;
@@ -45,6 +50,7 @@ namespace PlaneShift
             levelSubscription = EventCenter.Instance.SubscribeEvent<LevelInfo>(E_EventType.LevelLoaded, ShowLevel);
             unloadSubscription = EventCenter.Instance.SubscribeEvent(E_EventType.LevelUnloading, ClearLevel);
             completeSubscription = EventCenter.Instance.SubscribeEvent(E_EventType.LevelCompleted, ShowComplete);
+            passedSubscription = EventCenter.Instance.SubscribeEvent(E_EventType.LevelPassed, passedSound.Play);
             EventCenter.Instance.TriggerEvent(E_EventType.RequestUI);
         }
 
@@ -57,6 +63,7 @@ namespace PlaneShift
             levelSubscription?.Invoke();
             unloadSubscription?.Invoke();
             completeSubscription?.Invoke();
+            passedSubscription?.Invoke();
             ClearLevel();
         }
 

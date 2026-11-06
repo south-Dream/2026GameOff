@@ -482,6 +482,22 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 35744af6232fcb74282f99054ecc85f5, type: 2}
+    - target: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: m_Volume
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 9103067249347910053, guid: 3602e92ff94f7eb4eaeef5dee31efd14, type: 2}
     - target: {fileID: 1501536751416354479, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
       propertyPath: interactionName
       value: interact.lift
@@ -498,6 +514,22 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: 1101358a457c1c14ebbbb4f6f6c28597, type: 2}
+    - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: moveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dce61505a6697134f95237da6167be58, type: 3}
+    - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: stopSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a57c2fb1000e31458ea773e740721dd, type: 3}
+    - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: startSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bfea99b13b47c0f4bbd03c10355d025a, type: 3}
+    - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 6982525994445544645}
     - target: {fileID: 3501957710609950922, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
       propertyPath: roads.Array.size
       value: 1
@@ -546,6 +578,11 @@ PrefabInstance:
 --- !u!65 &2586233527412381054 stripped
 BoxCollider:
   m_CorrespondingSourceObject: {fileID: 5813227355179506387, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
+  m_PrefabInstance: {fileID: 8307064103165235117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6982525994445544645 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1418199230292136808, guid: 11d97d178daa6294d88482e49bcc581f, type: 3}
   m_PrefabInstance: {fileID: 8307064103165235117}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8499252927893768570 stripped

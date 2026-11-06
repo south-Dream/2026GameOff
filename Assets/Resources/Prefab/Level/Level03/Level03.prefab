@@ -1469,6 +1469,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6058524309949575845}
     - target: {fileID: 7332635120323343149, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+      propertyPath: moveSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ed175d3fc98d774dbac8842e868a1c4, type: 3}
+    - target: {fileID: 7332635120323343149, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+      propertyPath: stopSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a57c2fb1000e31458ea773e740721dd, type: 3}
+    - target: {fileID: 7332635120323343149, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+      propertyPath: startSound
+      value: 
+      objectReference: {fileID: 8300000, guid: bfea99b13b47c0f4bbd03c10355d025a, type: 3}
+    - target: {fileID: 7332635120323343149, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 7352730732729861815}
+    - target: {fileID: 7332635120323343149, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
       propertyPath: data.duration
       value: 1.1
       objectReference: {fileID: 0}
@@ -1492,6 +1508,22 @@ PrefabInstance:
       propertyPath: interactionName
       value: interact.rotate
       objectReference: {fileID: 0}
+    - target: {fileID: 8362369755934307426, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362369755934307426, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+      propertyPath: m_Volume
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362369755934307426, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8362369755934307426, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 9103067249347910053, guid: 3602e92ff94f7eb4eaeef5dee31efd14, type: 2}
     m_RemovedComponents:
     - {fileID: 2131480892917880130, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
     m_RemovedGameObjects: []
@@ -1536,6 +1568,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: e3c00415ad5b326428f85d5a215cf2b2, type: 2}
+--- !u!82 &7352730732729861815 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8362369755934307426, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}
+  m_PrefabInstance: {fileID: 1299076671749042901}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8316590339698335062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7020348210119126915, guid: 3a94a3d66c09819469fe33c13ca65292, type: 3}

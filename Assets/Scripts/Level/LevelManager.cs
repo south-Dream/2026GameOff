@@ -75,6 +75,7 @@ namespace PlaneShift
         {
             if (loading || completed || source == null || source != current || !source.CanExit) return false;
             record.Complete(index);
+            EventCenter.Instance.TriggerEvent(E_EventType.LevelPassed);
             if (HasNext) return LoadLevel(index + 1);
             completed = true;
             current.SetControl(false);

@@ -12,6 +12,13 @@ namespace PlaneShift
         [SerializeField] private Collider road;
         [SerializeField] private Collider[] roads;
         [SerializeField] private Collider button;
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip startSound;
+        /// <summary>
+        /// 机关运行期间循环播放的声音
+        /// </summary>
+        [SerializeField] private AudioClip moveSound;
+        [SerializeField] private AudioClip stopSound;
         private Vector3 startPosition;
         private Quaternion startRotation;
         private Vector3 buttonPosition;
@@ -52,6 +59,10 @@ namespace PlaneShift
             fromRotation = movingRoot.rotation;
             elapsed = 0;
             IsMoving = true;
+            audioSource.clip = moveSound;
+            audioSource.loop = true;
+            audioSource.Play();
+            audioSource.PlayOneShot(startSound);
         }
 
         /// <summary>
@@ -59,6 +70,7 @@ namespace PlaneShift
         /// </summary>
         public Vector3 Tick(float deltaTime)
         {
+            bool wasMoving = IsMoving;
             Vector3 previous = movingRoot.position;
             elapsed += deltaTime;
             float t = Mathf.Clamp01(elapsed / Mathf.Max(0.1f, data.duration));
@@ -72,11 +84,29 @@ namespace PlaneShift
             else movingRoot.rotation = fromRotation;
             if (data.carryPlayer) button.transform.position = buttonPosition + movingRoot.position - startPosition;
             IsMoving = t < 1;
+            if (wasMoving && !IsMoving)
+            {
+                audioSource.Stop();
+                audioSource.PlayOneShot(stopSound);
+            }
             return movingRoot.position - previous;
         }
 
+        /// <summary>
+        /// 暂停运转声并保留播放位置
+        /// </summary>
+        public void SetSoundPaused(bool paused)
+        {
+            if (!IsMoving) return;
+            if (paused) audioSource.Pause();
+            else audioSource.UnPause();
+        }
+
+        private void OnDisable() => audioSource.Stop();
+
         public void ResetState()
         {
+            audioSource.Stop();
             active = false;
             turn = 0;
             angle = 0;

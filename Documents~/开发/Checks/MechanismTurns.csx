@@ -2,7 +2,12 @@ var root = new UnityEngine.GameObject("MechanismCheck");
 try
 {
     var mechanism = root.AddComponent<PlaneShift.MapMechanism>();
+    var audioSource = root.AddComponent<UnityEngine.AudioSource>();
     var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+    typeof(PlaneShift.MapMechanism).GetField("audioSource", flags).SetValue(mechanism, audioSource);
+    typeof(PlaneShift.MapMechanism).GetField("startSound", flags).SetValue(mechanism, AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Resources/Prefab/Map/Common/Mechanism/Audio/Activate.wav"));
+    typeof(PlaneShift.MapMechanism).GetField("moveSound", flags).SetValue(mechanism, AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Resources/Prefab/Map/Common/Mechanism/Audio/RotateLoop.wav"));
+    typeof(PlaneShift.MapMechanism).GetField("stopSound", flags).SetValue(mechanism, AssetDatabase.LoadAssetAtPath<AudioClip>("Assets/Resources/Prefab/Map/Common/Mechanism/Audio/Arrive.wav"));
     var moving = new UnityEngine.GameObject("Moving");
     moving.transform.SetParent(root.transform);
     var first = moving.AddComponent<UnityEngine.BoxCollider>();

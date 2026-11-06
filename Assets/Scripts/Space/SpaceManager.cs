@@ -54,6 +54,7 @@ namespace PlaneShift
         {
             inputEnabled = active;
             if (!initialized) return;
+            map.SetSoundPaused(!active);
             ApplyControl();
             if (!active) player.ClearInteraction();
         }
